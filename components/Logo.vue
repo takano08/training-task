@@ -8,7 +8,7 @@
 
 <style scoped>
   .LogoWrapper {
-    height: 150px;
+
     width: 100%;
     display: flex;
     justify-content: left;
