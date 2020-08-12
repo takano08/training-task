@@ -25,13 +25,13 @@
 <style scoped>
   .headerGroup {
     text-align: right;
-     //font-family: 'Lato' !important;
     font-weight: lighter ;
   }
+
   .headerGroup a{
     color: #5B5B5B;
+    text-decoration: none;
   }
-
 
 
 </style>
