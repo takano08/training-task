@@ -4,6 +4,7 @@
 
       <h1 class="title">
         nuxt-front
+        <ContentCards></ContentCards>
       </h1>
       <div class="links">
         <a
