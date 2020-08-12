@@ -1,3 +1,3 @@
 <template>
-<h1>採用情報</h1>
+<h1><nuxt-link to="/entry">採用情報</nuxt-link></h1>
 </template>

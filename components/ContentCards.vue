@@ -3,17 +3,17 @@
   <el-row :gutter="12">
     <el-col :span="8">
       <el-card shadow="hover">
-        企業情報
+        <nuxt-link to="/about">企業情報</nuxt-link>
       </el-card>
     </el-col>
     <el-col :span="8">
       <el-card shadow="hover">
-        ブログ
+        <nuxt-link to="/blog">ブログ</nuxt-link>
       </el-card>
     </el-col>
     <el-col :span="8">
       <el-card shadow="hover">
-        採用情報
+        <nuxt-link to="/recruit">採用情報</nuxt-link>
       </el-card>
     </el-col>
   </el-row>

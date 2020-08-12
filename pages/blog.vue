@@ -1,3 +1,3 @@
 <template>
-<h1>ブログ</h1>
+<h1><nuxt-link to="/text">ブログ</nuxt-link></h1>
 </template>

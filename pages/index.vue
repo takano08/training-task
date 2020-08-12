@@ -1,31 +1,34 @@
 <template>
-  <div class="container">
-    <div>
+<div class="container">
+  <div class ="header">
+  <div class="block">
+    <el-carousel height="150px">
+      <el-carousel-item v-for="item in 4" :key="item">
+        <h3 class="small">{{ item }}</h3>
+      </el-carousel-item>
+    </el-carousel>
+  </div>
+  </div>
 
-      <h1 class="title">
-        nuxt-front
-        <ContentCards></ContentCards>
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+  <div class="main">
+    <div class="box scroll">
+      <p>お知らせ</p>
+      <p><nuxt-link to="/news">news1</nuxt-link></p>
+      <p>news2</p>
+      <p>news3</p>
+      <p>news4</p>
+      <p>news5</p>
     </div>
   </div>
+
+  <div class="footer">
+    <ContentCards></ContentCards>
+  </div>
+</div>
+
+
+
+
 </template>
 
 <script>
@@ -33,42 +36,47 @@ export default {}
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+.el-carousel__item h3 {
+    color: #475669;
+    font-size: 14px;
+    opacity: 0.75;
+    line-height: 200px;
+    margin: 0;
+  }
 
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
+  .el-carousel__item:nth-child(2n) {
+    background-color: #99a9bf;
+  }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
+  .el-carousel__item:nth-child(2n+1) {
+    background-color: #d3dce6;
+  }
 
-.links {
-  padding-top: 15px;
-}
+  .box{
+    width:400px;
+    height:300px;
+    background:#ddd;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .scroll{
+    overflow:scroll;
+  }
+
+  .container {
+    height:100%
+  }
+
+  .header {
+    height:40%;
+  }
+
+  .main {
+    height:30%;
+
+  }
+
+  .footer {
+    height:30%;
+  }
 </style>
