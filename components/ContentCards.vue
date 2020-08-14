@@ -15,7 +15,7 @@
     <el-col :span="8">
       <el-card class="box-card">
               <div slot="header" class="clearfix">
-                <span><nuxt-link to="/about">Blog</nuxt-link></span>
+                <span><nuxt-link to="/blog">Blog</nuxt-link></span>
               </div>
               <img width="320px"  src="https://c.pxhere.com/photos/15/fe/pen_note_paper_document_notebook_blank_writing_empty-1107641.jpg!d" class="image">
               <div class="bottom clearfix">
@@ -26,7 +26,7 @@
     <el-col :span="8">
       <el-card class="box-card">
               <div slot="header" class="clearfix">
-                <span><nuxt-link to="/about">採用情報</nuxt-link></span>
+                <span><nuxt-link to="/recruit">採用情報</nuxt-link></span>
               </div>
               <img width="320px" src="https://offerbox.jp/company/wp-content/uploads/2019/05/pixta_43993222_XL_%E5%A5%B3%E6%80%A7_%E7%94%B7%E6%80%A7_%E3%82%AF%E3%82%99%E3%83%A9%E3%83%95.jpg" class="image">
               <div class="bottom clearfix">

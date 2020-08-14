@@ -1,7 +1,7 @@
 <template>
   <div class="LogoWrapper">
     <nuxt-link to="/">
-      <h1>RDBFk</h1>
+      <h1>RDBF</h1>
     </nuxt-link>
   </div>
 </template>
