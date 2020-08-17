@@ -14,7 +14,7 @@
           <p>{{ article.date }}</p>
         </div>
         <div class="article-footer">
-          <p><nuxt-link to="/text">read more</nuxt-link></p>
+          <p><nuxt-link to="/detail">read more</nuxt-link></p>
         </div>
       </el-card>
     </div>

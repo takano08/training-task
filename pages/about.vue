@@ -46,6 +46,7 @@
 </div>
 </template>
 
+
 <style>
   .about-top {
     background-image:url("https://d1f5hsy4d47upe.cloudfront.net/75/753641ca2aea0d4485e2472a0c04f3be_t.jpeg");
@@ -54,11 +55,11 @@
 
 
   .about-body h2 {
-    border-bottom:solid 2px blue;
+    border-bottom:solid 2px #333;
   }
 
   .about-body th {
-    border-bottom:solid 1px blue;
+    border-bottom:solid 1px #333;
   }
 
   .about-body td {
