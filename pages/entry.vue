@@ -58,35 +58,46 @@
             </tbody>
     </table>
   </div>
+  <div class="entry-form-top">
+    <h1>エントリーフォーム</h1>
+    <p>以下のフォームをご入力ください。入力いただいた内容を確認後、担当者よりご連絡いたします。</p>
+  </div>
   <div class="entry-form">
-    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="130px" class="demo-ruleForm">
+      <el-form-item label="採用種別" prop="region">
+         <el-select v-model="ruleForm.region" placeholder="採用種別を選択してください。">
+            <el-option label="コンサルタント" value="shanghai"></el-option>
+            <el-option label="エンジニア" value="beijing"></el-option>
+         </el-select>
+      </el-form-item>
       <el-form-item label="氏名" prop="name">
         <el-input v-model="ruleForm.name"></el-input>
       </el-form-item>
-      <el-form-item label="採用種別" prop="region">
-        <el-select v-model="ruleForm.region" placeholder="採用種別">
-          <el-option label="コンサルタント" value="shanghai"></el-option>
-          <el-option label="エンジニア" value="beijing"></el-option>
-        </el-select>
+      <el-form-item label="フリガナ" prop="phonetic">
+        <el-input v-model="ruleForm.phonetic"></el-input>
       </el-form-item>
       <el-form-item label="生年月日" required>
-        <el-col :span="11">
-          <el-form-item prop="date1">
-            <el-date-picker type="date" placeholder="Pick a date" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
+          <el-form-item prop="birthday">
+            <el-date-picker type="date" placeholder="Pick a date" v-model="ruleForm.birthday" style="width: 500px;"></el-date-picker>
           </el-form-item>
-        </el-col>
       </el-form-item>
-      <el-form-item label="性別" prop="resource">
-        <el-radio-group v-model="ruleForm.resource">
+      <el-form-item label="性別" prop="gender">
+        <el-radio-group v-model="ruleForm.gender">
           <el-radio label="男性"></el-radio>
           <el-radio label="女性"></el-radio>
         </el-radio-group>
       </el-form-item>
+      <el-form-item label="メールアドレス" prop="mail">
+        <el-input v-model="ruleForm.mail"></el-input>
+      </el-form-item>
+      <el-form-item label="電話番号" prop="phone">
+        <el-input v-model="ruleForm.phone"></el-input>
+      </el-form-item>
       <el-form-item label="その他（質問など)" prop="desc">
-        <el-input type="textarea" v-model="ruleForm.desc"></el-input>
+        <el-input type="textarea" v-model="ruleForm.desc" style="width: 500px;"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">Create</el-button>
+        <el-button type="primary" @click="submitForm('ruleForm')">確認画面</el-button>
         <el-button @click="resetForm('ruleForm')">Reset</el-button>
       </el-form-item>
     </el-form>
@@ -102,35 +113,37 @@
         ruleForm: {
           name: '',
           region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
+          phonetic:'',
+          birthday: '',
+          gender: '',
+          mail:'',
+          phone:'',
           desc: ''
         },
         rules: {
+        region: [
+            { required: true, message: '必須項目です。', trigger: 'change' }
+          ],
           name: [
-            { required: true, message: 'Please input Activity name', trigger: 'blur' },
-            { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' }
+            { required: true, message: '必須項目です。', trigger: 'blur' }
           ],
-          region: [
-            { required: true, message: 'Please select Activity zone', trigger: 'change' }
+　　　　　　phonetic: [
+            { required: true, message: '必須項目です。', trigger: 'blur' }
           ],
-          date1: [
-            { type: 'date', required: true, message: 'Please pick a date', trigger: 'change' }
+          birthday: [
+            { type: 'date', required: true, message: '必須項目です。', trigger: 'change' }
           ],
-          date2: [
-            { type: 'date', required: true, message: 'Please pick a time', trigger: 'change' }
+          gender: [
+            { required: true, message: '必須項目です。', trigger: 'change' }
           ],
-          type: [
-            { type: 'array', required: true, message: 'Please select at least one activity type', trigger: 'change' }
+          mail: [
+            { required: true, message: '必須項目です。', trigger: 'blur' }
           ],
-          resource: [
-            { required: true, message: 'Please select activity resource', trigger: 'change' }
+          phone: [
+            { required: true, message: '必須項目です。', trigger: 'blur' }
           ],
           desc: [
-            { required: true, message: 'Please input activity form', trigger: 'blur' }
+            { required: false, trigger: 'blur' }
           ]
         }
       };
@@ -149,7 +162,14 @@
       resetForm(formName) {
         this.$refs[formName].resetFields();
       }
+    },
+
+    computed: {
+      clickable() {
+        return true;
+      }
     }
+
   }
 </script>
 
@@ -171,6 +191,13 @@
   .recruit-body td {
     text-align: left;
   }
+
+  .el-input {
+    width:500px;
+    height:50px;
+  }
+
+
 
 </style>
 
