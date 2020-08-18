@@ -65,40 +65,46 @@
   <div class="entry-form">
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="130px" class="demo-ruleForm">
       <el-form-item label="採用種別" prop="region">
-         <el-select v-model="ruleForm.region" placeholder="採用種別を選択してください。">
+         <el-select v-bind:disabled="verified" v-model="ruleForm.region" placeholder="採用種別を選択してください。">
             <el-option label="コンサルタント" value="shanghai"></el-option>
             <el-option label="エンジニア" value="beijing"></el-option>
          </el-select>
       </el-form-item>
       <el-form-item label="氏名" prop="name">
-        <el-input v-model="ruleForm.name"></el-input>
+        <el-input v-bind:disabled="verified" v-model="ruleForm.name"></el-input>
       </el-form-item>
       <el-form-item label="フリガナ" prop="phonetic">
-        <el-input v-model="ruleForm.phonetic"></el-input>
+        <el-input v-bind:disabled="verified" v-model="ruleForm.phonetic"></el-input>
       </el-form-item>
       <el-form-item label="生年月日" required>
           <el-form-item prop="birthday">
-            <el-date-picker type="date" placeholder="Pick a date" v-model="ruleForm.birthday" style="width: 500px;"></el-date-picker>
+            <el-date-picker v-bind:disabled="verified" type="date" placeholder="Pick a date" v-model="ruleForm.birthday" style="width: 500px;"></el-date-picker>
           </el-form-item>
       </el-form-item>
       <el-form-item label="性別" prop="gender">
-        <el-radio-group v-model="ruleForm.gender">
+        <el-radio-group v-bind:disabled="verified" v-model="ruleForm.gender">
           <el-radio label="男性"></el-radio>
           <el-radio label="女性"></el-radio>
         </el-radio-group>
       </el-form-item>
       <el-form-item label="メールアドレス" prop="mail">
-        <el-input v-model="ruleForm.mail"></el-input>
+        <el-input v-bind:disabled="verified" v-model="ruleForm.mail"></el-input>
       </el-form-item>
       <el-form-item label="電話番号" prop="phone">
-        <el-input v-model="ruleForm.phone"></el-input>
+        <el-input v-bind:disabled="verified" v-model="ruleForm.phone"></el-input>
       </el-form-item>
       <el-form-item label="その他（質問など)" prop="desc">
-        <el-input type="textarea" v-model="ruleForm.desc" style="width: 500px;"></el-input>
+        <el-input type="textarea" v-bind:disabled="verified" v-model="ruleForm.desc" style="width: 500px;"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">確認画面</el-button>
-        <el-button @click="resetForm('ruleForm')">Reset</el-button>
+        <template v-if="!verified">
+          <el-button type="primary" @click="verifiedForm()">内容確認</el-button>
+        </template>
+        <template v-if="verified">
+          <el-button type="primary" @click="submitForm('ruleForm')">送信</el-button>
+          <el-button type="primary" @click="verifiedForm()">戻る</el-button>
+        </template>
+          <el-button @click="resetForm('ruleForm')">リセット</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -110,6 +116,7 @@
   export default {
     data() {
       return {
+      verified : false,
         ruleForm: {
           name: '',
           region: '',
@@ -152,7 +159,7 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+            alert('送信しました。'); //axios通信
           } else {
             console.log('error submit!!');
             return false;
@@ -161,10 +168,14 @@
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
+      },
+      verifiedForm() {
+         this.verified = !this.verified;
       }
+
     },
 
-    computed: {
+     computed: {
       clickable() {
         return true;
       }
