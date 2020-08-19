@@ -54,7 +54,8 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    '@nuxtjs/auth'
   ],
   /*
   ** Axios module configuration
@@ -65,6 +66,26 @@ export default {
       target: 'http://localhost:8080/',
       pathRewrite: {
         '^/api/' : '/'
+      }
+    }
+  },
+  /*
+ ** auth module configuration
+ */
+  auth: {
+    redirect: {
+      login: '/admin',   // 未ログイン時に認証ルートへアクセスした際のリダイレクトURL
+      logout: '/',  // ログアウト時のリダイレクトURL
+      callback: false,   // Oauth認証等で必要となる コールバックルート
+      home: '/admin-top',         // ログイン後のリダイレクトURL
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'api/user/login', method: 'post', propertyName: 'token'},
+          user: { url: 'api/private', method: 'get', propertyName: false},
+          logout: false
+        },
       }
     }
   },
