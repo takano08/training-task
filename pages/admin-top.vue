@@ -1,4 +1,6 @@
 <template>
+  <div>
+   {{user}}
   <el-table
     :data="tableData.filter(data => !search || data.title.toLowerCase().includes(search.toLowerCase()))"
     style="width: 100%">
@@ -42,6 +44,7 @@
       </template>
     </el-table-column>
   </el-table>
+  </div>
 </template>
 
 <script>
@@ -79,10 +82,19 @@
       handleDelete(index, row) {
         console.log(index, row);
       },
-
       filterTag(value, row) {
         return row.tag === value;
       }
+    },
+    computed: {
+      user() {
+        return this.$auth.user;
+      }
+    },
+    middleware({ store, redirect }) {
+      if(!store.$auth.loggedIn) {
+        redirect('/admin');
+        }
     }
-  }
+}
 </script>
