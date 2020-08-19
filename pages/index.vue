@@ -1,30 +1,45 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        nuxt-front
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+<div class="container">
+  <div class ="top">
+  <div class="block">
+    <el-carousel height="300px">
+      <el-carousel-item >
+        <img src="https://i.shgcdn.com/a1060683-bd16-4ffd-ada6-a108706605cf/-/format/auto/-/preview/3000x3000/-/quality/lighter/" class="image">
+      </el-carousel-item>
+      <el-carousel-item >
+        <img src="https://i.shgcdn.com/1118ef0a-498e-41bb-b816-e62a0a476581/-/format/auto/-/preview/3000x3000/-/quality/lighter/" class="image">
+      </el-carousel-item>
+      <el-carousel-item >
+        <img src="https://i.shgcdn.com/a1060683-bd16-4ffd-ada6-a108706605cf/-/format/auto/-/preview/3000x3000/-/quality/lighter/" class="image">
+      </el-carousel-item>
+    </el-carousel>
+  </div>
+  </div>
+
+  <div class="main">
+    <div class="box scroll">
+      <h3>お知らせ</h3>
+      <ul>
+        <li><nuxt-link to="/news">【2021年卒市場動向】どうなる？2021年卒の新卒採用の動向・変化を予測</nuxt-link></li>
+        <li><nuxt-link to="/news">【2021年卒市場動向】どうなる？2021年卒の新卒採用の動向・変化を予測</nuxt-link></li>
+        <li><nuxt-link to="/news">【2021年卒市場動向】どうなる？2021年卒の新卒採用の動向・変化を予測</nuxt-link></li>
+        <li><nuxt-link to="/news">【2021年卒市場動向】どうなる？2021年卒の新卒採用の動向・変化を予測</nuxt-link></li>
+        <li><nuxt-link to="/news">【2021年卒市場動向】どうなる？2021年卒の新卒採用の動向・変化を予測</nuxt-link></li>
+        <li><nuxt-link to="/news">【2021年卒市場動向】どうなる？2021年卒の新卒採用の動向・変化を予測</nuxt-link></li>
+        <li><nuxt-link to="/news">【2021年卒市場動向】どうなる？2021年卒の新卒採用の動向・変化を予測</nuxt-link></li>
+        <li><nuxt-link to="/news">【2021年卒市場動向】どうなる？2021年卒の新卒採用の動向・変化を予測</nuxt-link></li>
+      </ul>
     </div>
   </div>
+
+  <div class="contents">
+    <ContentCards></ContentCards>
+  </div>
+</div>
+
+
+
+
 </template>
 
 <script>
@@ -32,42 +47,48 @@ export default {}
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+  .el-carousel__item  {
+      font-size: 14px;
+      opacity: 0.75;
+      line-height: 250px;
+      margin: 0;
+    }
 
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
+  .box{
+    width: 95%;
+    height: 450px;
+    margin-top: 20px;
+    margin-left:auto;
+    margin-right:auto;
+    overflow:scroll;
+    border-top: solid 1px #eee;
+    border-bottom: solid 1px #eee;
+  }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
+  .box ul li {
+      text-align: left;
+    }
 
-.links {
-  padding-top: 15px;
-}
+  .box p {
+    text-align: left;
+    margin-left: 30px;
+  }
+
+  .container {
+    height:100%
+  }
+
+  .top {
+    height:40%;
+  }
+
+  .main {
+    height:30%;
+
+  }
+
+  .contents {
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
 </style>
