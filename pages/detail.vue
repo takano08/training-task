@@ -3,6 +3,7 @@
     <div class="detail-title">
      <p class="detail-date">
      <span>{{ post[0].date }}</span>
+     {{ $route.params.id }}
      </p>
      <h1>{{ post[0].title }}</h1>
     </div>

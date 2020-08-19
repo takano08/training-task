@@ -14,7 +14,9 @@
           <p>{{ article.date }}</p>
         </div>
         <div class="article-footer">
-          <p><nuxt-link to="/detail">read more</nuxt-link></p>
+        <el-link type="primary">
+          <p　v-on:click="moveDetail(article.id)">read more</p>
+        </el-link>
         </div>
       </el-card>
     </div>
@@ -24,6 +26,13 @@
 
 <script>
   export default {
+
+  methods: {
+    moveDetail(articleId) {　　// articleId = 1
+        this.$router.push({ path: 'detail' , query :{ id: articleId }});
+  }
+
+  },
 
   computed: {
     articleLists() {
