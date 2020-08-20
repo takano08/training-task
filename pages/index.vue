@@ -22,7 +22,7 @@
       <ul v-for="article in articles">
         <li v-if="article.tag==='news'">
           <p>{{ article.date}}</p>
-          <p>{{ article.title}}</p>
+          <p v-on:click="moveDetail(article.id)">{{ article.title}}</p>
         </li>
       </ul>
     </div>
@@ -40,6 +40,14 @@
 
 <script>
 export default {
+  methods: {
+    moveDetail(articleId) {　　// articleId = 1
+      this.$router.push({path: 'detail', query: {id: articleId}});
+    }
+  },
+
+
+
   computed: {
     articles() {
       return this.$store.state.article.articles;
