@@ -4,33 +4,33 @@
       <h1>記事入力フォーム</h1>
     </div>
     <div class="admin-form">
-      <el-form :model="adminForm" :rules="adminRules" ref="adminForm" label-width="130px" class="demo-adminForm">
+      <el-form :model="createArticle" :rules="adminRules" ref="adminForm" label-width="130px" class="demo-adminForm">
         <el-form-item label="タイトル" prop="title">
-          <el-input v-bind:disabled="adminVerified" v-model="adminForm.title"></el-input>
+          <el-input v-bind:disabled="adminVerified" v-model="createArticle.title"></el-input>
         </el-form-item>
         <el-form-item label="投稿日" required>
           <el-form-item prop="postDate">
-            <el-date-picker v-bind:disabled="adminVerified" type="date" placeholder="Pick a date" v-model="adminForm.postDate" style="width: 500px;"></el-date-picker>
+            <el-date-picker v-bind:disabled="adminVerified" type="date" placeholder="Pick a date" v-model="createArticle.postDate" style="width: 500px;"></el-date-picker>
           </el-form-item>
         </el-form-item>
         <el-form-item label="Tag" prop="tag">
-          <el-radio-group v-bind:disabled="adminVerified" v-model="adminForm.tag">
+          <el-radio-group v-bind:disabled="adminVerified" v-model="createArticle.tag">
             <el-radio label="News"></el-radio>
             <el-radio label="Blog"></el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="本文" prop="body">
-          <el-input type="textarea" v-bind:disabled="adminVerified" v-model="adminForm.body" style="width: 500px;"></el-input>
+          <el-input type="textarea" v-bind:disabled="adminVerified" v-model="createArticle.body" style="width: 500px;"></el-input>
         </el-form-item>
         <el-form-item>
           <template v-if="!adminVerified">
             <el-button type="primary" @click="adminVerifiedForm()">内容確認</el-button>
           </template>
           <template v-if="adminVerified">
-            <el-button type="primary" @click="adminSubmitForm('adminForm')">送信</el-button>
+            <el-button type="primary" @click="adminSubmitForm('createArticle')">送信</el-button>
             <el-button type="primary" @click="adminVerifiedForm()">戻る</el-button>
           </template>
-          <el-button @click="adminResetForm('adminForm')">リセット</el-button>
+          <el-button @click="adminResetForm('createArticle')">リセット</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -42,7 +42,8 @@
     data() {
       return {
         adminVerified : false,
-        adminForm: {
+
+        createArticle: {
           title: '',
           postData: '',
           tag:'',
