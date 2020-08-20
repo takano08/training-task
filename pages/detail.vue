@@ -3,7 +3,7 @@
     <div class="detail-title">
      <p class="detail-date">
      <span>{{ post[0].date }}</span>
-     {{ $route.params.id }}
+     {{ $route.query.id }}
      </p>
      <h1>{{ post[0].title }}</h1>
     </div>
@@ -25,7 +25,9 @@
     },
 
     mounted(){
-      axios.get('/api/employees') //apiからのデータ取得をリクエスト
+      const url='/api/article' +this.$route.query.id
+      console.log(url)
+      axios.get(url) //apiからのデータ取得をリクエスト
         .then((res) => {    //thenはレスポンスを受け取った段階で呼ばれるメソッド(res)にはレスポンスデータが入っている
             console.log(res.data) //res.dataにはjsonオブジェクトが入っている
             return {post:data}
