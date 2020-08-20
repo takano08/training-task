@@ -19,15 +19,11 @@
   <div class="main">
     <div class="box scroll">
       <h3>お知らせ</h3>
-      <ul>
-        <li><nuxt-link to="/news">【2021年卒市場動向】どうなる？2021年卒の新卒採用の動向・変化を予測</nuxt-link></li>
-        <li><nuxt-link to="/news">【2021年卒市場動向】どうなる？2021年卒の新卒採用の動向・変化を予測</nuxt-link></li>
-        <li><nuxt-link to="/news">【2021年卒市場動向】どうなる？2021年卒の新卒採用の動向・変化を予測</nuxt-link></li>
-        <li><nuxt-link to="/news">【2021年卒市場動向】どうなる？2021年卒の新卒採用の動向・変化を予測</nuxt-link></li>
-        <li><nuxt-link to="/news">【2021年卒市場動向】どうなる？2021年卒の新卒採用の動向・変化を予測</nuxt-link></li>
-        <li><nuxt-link to="/news">【2021年卒市場動向】どうなる？2021年卒の新卒採用の動向・変化を予測</nuxt-link></li>
-        <li><nuxt-link to="/news">【2021年卒市場動向】どうなる？2021年卒の新卒採用の動向・変化を予測</nuxt-link></li>
-        <li><nuxt-link to="/news">【2021年卒市場動向】どうなる？2021年卒の新卒採用の動向・変化を予測</nuxt-link></li>
+      <ul v-for="article in articles">
+        <li v-if="article.tag==='news'">
+          <p>{{ article.date}}</p>
+          <p v-on:click="moveDetail(article.id)">{{ article.title}}</p>
+        </li>
       </ul>
     </div>
   </div>
@@ -43,7 +39,24 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    moveDetail(articleId) {　　// articleId = 1
+      this.$router.push({path: 'detail', query: {id: articleId}});
+    }
+  },
+
+
+
+  computed: {
+    articles() {
+      return this.$store.state.article.articles;
+    }
+  },
+  mounted() {
+    this.$store.dispatch('article/fetchArticlesAction')
+  }
+}
 </script>
 
 <style>

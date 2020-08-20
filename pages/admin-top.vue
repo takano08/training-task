@@ -1,9 +1,14 @@
 <template>
-  <div>
+  <div class="admin-top-container">
    {{user}}
+    <div class="admin-top-header">
+      <h1>管理画面トップ</h1>
+    </div>
+    <div class="edit">
+      <nuxt-link to="/admin-form"><el-button type="primary">新規作成</el-button></nuxt-link>
+    </div>
   <el-table
-    :data="tableData.filter(data => !search || data.title.toLowerCase().includes(search.toLowerCase()))"
-    style="width: 100%">
+    :data="articles">
     <el-table-column
       label="Date"
       prop="date">
@@ -16,7 +21,7 @@
       prop="tag"
       label="Tag"
       width="100"
-      :filters="[{ text: 'Home', value: 'Home' }, { text: 'Office', value: 'Office' }]"
+      :filters="[{ text: 'news', value: 'news' }, { text: 'blog', value: 'blog' }]"
       :filter-method="filterTag"
       filter-placement="bottom-end">
       <template slot-scope="scope">
@@ -27,20 +32,14 @@
     </el-table-column>
     <el-table-column
       align="right">
-      <template slot="header" slot-scope="scope">
-        <el-input
-          v-model="search"
-          size="mini"
-          placeholder="Type to search"/>
-      </template>
       <template slot-scope="scope">
         <el-button
           size="mini"
-          @click="handleEdit(scope.$index, scope.row)">編集</el-button>
+          v-on:click="handleEdit(scope.row.id)">編集</el-button>
         <el-button
           size="mini"
           type="danger"
-          @click="handleDelete(scope.$index, scope.row)">削除</el-button>
+          v-on:click="$store.dispatch('article/deleteArticlesAction',scope.row.id)">削除</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -51,33 +50,16 @@
   export default {
     data() {
       return {
-        tableData: [{
-          date: '2016-05-03',
-          title: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
-          tag: 'Home'
-        }, {
-          date: '2016-05-02',
-          title: 'John',
-          address: 'No. 189, Grove St, Los Angeles',
-          tag: 'Home'
-        }, {
-          date: '2016-05-04',
-          title: 'Morgan',
-          address: 'No. 189, Grove St, Los Angeles',
-          tag: 'Home'
-        }, {
-          date: '2016-05-01',
-          title: 'Jessy',
-          address: 'No. 189, Grove St, Los Angeles',
-          tag: 'Office'
-        }],
-        search: '',
+
       }
     },
+    mounted() {
+      this.$store.dispatch('article/fetchArticlesAction')
+    },
+
     methods: {
-      handleEdit(index, row) {
-        console.log(index, row);
+      handleEdit(articleId) {
+        this.$router.push({ path: 'admin-form' , query :{ id: articleId }});
       },
       handleDelete(index, row) {
         console.log(index, row);
@@ -89,12 +71,21 @@
     computed: {
       user() {
         return this.$auth.user;
+      },
+      articles() {
+        return this.$store.state.article.articles;
       }
-    },
-    middleware({ store, redirect }) {
-      if(!store.$auth.loggedIn) {
-        redirect('/admin');
-        }
     }
+    //middleware({ store, redirect }) {
+     // if(!store.$auth.loggedIn) {
+       // redirect('/admin');
+       // }
+    //}
 }
 </script>
+
+<style>
+.edit {
+  text-align: right;
+}
+</style>
