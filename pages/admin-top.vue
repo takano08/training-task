@@ -2,8 +2,7 @@
   <div>
    {{user}}
   <el-table
-    :data="tableData.filter(data => !search || data.title.toLowerCase().includes(search.toLowerCase()))"
-    style="width: 100%">
+    :data="articles">
     <el-table-column
       label="Date"
       prop="date">
@@ -16,7 +15,7 @@
       prop="tag"
       label="Tag"
       width="100"
-      :filters="[{ text: 'Home', value: 'Home' }, { text: 'Office', value: 'Office' }]"
+      :filters="[{ text: 'news', value: 'news' }, { text: 'blog', value: 'blog' }]"
       :filter-method="filterTag"
       filter-placement="bottom-end">
       <template slot-scope="scope">
@@ -27,12 +26,6 @@
     </el-table-column>
     <el-table-column
       align="right">
-      <template slot="header" slot-scope="scope">
-        <el-input
-          v-model="search"
-          size="mini"
-          placeholder="Type to search"/>
-      </template>
       <template slot-scope="scope">
         <el-button
           size="mini"
@@ -51,28 +44,7 @@
   export default {
     data() {
       return {
-        tableData: [{
-          date: '2016-05-03',
-          title: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
-          tag: 'Home'
-        }, {
-          date: '2016-05-02',
-          title: 'John',
-          address: 'No. 189, Grove St, Los Angeles',
-          tag: 'Home'
-        }, {
-          date: '2016-05-04',
-          title: 'Morgan',
-          address: 'No. 189, Grove St, Los Angeles',
-          tag: 'Home'
-        }, {
-          date: '2016-05-01',
-          title: 'Jessy',
-          address: 'No. 189, Grove St, Los Angeles',
-          tag: 'Office'
-        }],
-        search: '',
+
       }
     },
     methods: {
@@ -89,8 +61,11 @@
     computed: {
       user() {
         return this.$auth.user;
+      },
+      articles() {
+        return this.$store.state.article.articles;
       }
-    },
+    }
     //middleware({ store, redirect }) {
      // if(!store.$auth.loggedIn) {
        // redirect('/admin');
