@@ -4,7 +4,7 @@
       <h1>記事入力フォーム</h1>
     </div>
     <div class="admin-form">
-      <el-form :model="article" :rules="adminRules" ref="adminForm" label-width="130px" class="demo-adminForm">
+      <el-form :model="article" :rules="adminRules" ref="article" label-width="130px" class="demo-adminForm">
         <el-form-item label="タイトル" prop="title">
           <el-input v-bind:disabled="adminVerified" v-model="article.title"></el-input>
         </el-form-item>
@@ -48,7 +48,7 @@
         article: {
           id:null,
           title: '',
-          postData: '',
+          postDate: '',
           tag:'',
           body: ''
         },
@@ -68,25 +68,39 @@
         }
       };
     },
+
+    mounted() {
+      if(!this.$route.query.id){
+        //!this.$route.query.idは結果てきにundefined
+          console.log("新規")
+      }else{
+        console.log("編集")
+        this.article.id=this.$route.query.id
+        //axiosでthis.$route.query.idを取りに行ってつめる
+      }
+    },
     methods: {
       adminSubmitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
 
-            if(article.id===null){
-              $store.dispatch('article/createArticlesAction',article)
+            if(this.article.id===null){
+              console.log("sinnki")
+              //this.$store.dispatch('article/createArticlesAction',article)
 
-            }else{
-              const url='/api/article' +this.$route.query.id
+            }else{//storeを経由しないのは、送信したもの（article）を再度読み込む必要がないから
+              console.log("編集")
+              const url='/api/article/' +this.$route.query.id
               console.log(url)
-              axios.get(url) //apiからのデータ取得をリクエスト
-                .then((res) => {    //thenはレスポンスを受け取った段階で呼ばれるメソッド(res)にはレスポンスデータが入っている
-                  console.log(res.data) //res.dataにはjsonオブジェクトが入っている
-                  return {post:res.data}
-                })
+              //axios.post(url) //apiからのデータ取得をリクエスト
+                //.then((res) => {    //thenはレスポンスを受け取った段階で呼ばれるメソッド(res)にはレスポンスデータが入っている
+                //console.log(res)
+
+                //})
             }
 
             alert('送信しました。'); //axios通信
+            this.adminResetForm(formName);
           } else {
             console.log('error submit!!');
             return false;

@@ -160,6 +160,7 @@
         this.$refs[formName].validate((valid) => {
           if (valid) {
             alert('送信しました。'); //axios通信
+            this.resetForm(formName);
           } else {
             console.log('error submit!!');
             return false;
