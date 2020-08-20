@@ -44,4 +44,32 @@ export const actions = {
       return false;
     })
   },
+
+  deleteEmployeesAction : async function ({commit,dispatch},employeesId) {
+
+    console.log(employeesId);
+    const url = '/api/employees/' + employeesId
+    console.log(url);
+    axios.delete(url).then((response) => {
+      dispatch('fetchEmployeesAction')
+      return true;
+    }, (err) => {
+      console.log(err)
+      return false;
+    })
+  },
+
+  deleteArticlesAction : async function ({commit,dispatch},articlesId) {
+
+    console.log(articlesId);
+    const url = '/api/employees/' + articlesId
+    console.log(url);
+    axios.delete(url).then((response) => {
+      dispatch('fetchArticlesAction')
+      return true;
+    }, (err) => {
+      console.log(err)
+      return false;
+    })
+  },
 }

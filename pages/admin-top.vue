@@ -1,6 +1,12 @@
 <template>
-  <div>
+  <div class="admin-top-container">
    {{user}}
+    <div class="admin-top-header">
+      <h1>管理画面トップ</h1>
+    </div>
+    <div class="edit">
+      <nuxt-link to="/admin-form"><el-button type="primary">新規作成</el-button></nuxt-link>
+    </div>
   <el-table
     :data="articles">
     <el-table-column
@@ -29,11 +35,11 @@
       <template slot-scope="scope">
         <el-button
           size="mini"
-          @click="handleEdit(scope.$index, scope.row)">編集</el-button>
+          v-on:click="handleEdit(article.id)">編集</el-button>
         <el-button
           size="mini"
           type="danger"
-          @click="handleDelete(scope.$index, scope.row)">削除</el-button>
+          v-on:click="$store.dispatch('article/deleteArticlesAction',article.id)">削除</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -47,9 +53,13 @@
 
       }
     },
+    mounted() {
+      this.$store.dispatch('article/fetchArticlesAction')
+    },
+
     methods: {
-      handleEdit(index, row) {
-        console.log(index, row);
+      handleEdit(articleId) {
+        this.$router.push({ path: 'detail' , query :{ id: articleId }});
       },
       handleDelete(index, row) {
         console.log(index, row);
@@ -73,3 +83,9 @@
     //}
 }
 </script>
+
+<style>
+.edit {
+  text-align: right;
+}
+</style>
