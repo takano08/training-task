@@ -20,7 +20,7 @@
     <div class="box scroll">
       <h3>お知らせ</h3>
       <ul v-for="article in articles">
-        <li>
+        <li v-if="article.tag==='news'">
           <p>{{ article.date}}</p>
           <p>{{ article.title}}</p>
         </li>
@@ -44,6 +44,9 @@ export default {
     articles() {
       return this.$store.state.article.articles;
     }
+  },
+  mounted() {
+    this.$store.dispatch('article/fetchArticlesAction')
   }
 }
 </script>
