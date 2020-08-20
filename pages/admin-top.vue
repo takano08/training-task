@@ -35,11 +35,11 @@
       <template slot-scope="scope">
         <el-button
           size="mini"
-          v-on:click="handleEdit(article.id)">編集</el-button>
+          v-on:click="handleEdit(scope.row.id)">編集</el-button>
         <el-button
           size="mini"
           type="danger"
-          v-on:click="$store.dispatch('article/deleteArticlesAction',article.id)">削除</el-button>
+          v-on:click="$store.dispatch('article/deleteArticlesAction',scope.row.id)">削除</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -59,7 +59,7 @@
 
     methods: {
       handleEdit(articleId) {
-        this.$router.push({ path: 'detail' , query :{ id: articleId }});
+        this.$router.push({ path: 'admin-form' , query :{ id: articleId }});
       },
       handleDelete(index, row) {
         console.log(index, row);

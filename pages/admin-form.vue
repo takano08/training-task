@@ -38,12 +38,15 @@
 </template>
 
 <script>
+  import axios from "axios";
+
   export default {
     data() {
       return {
         adminVerified : false,
 
         article: {
+          id:null,
           title: '',
           postData: '',
           tag:'',
@@ -69,6 +72,20 @@
       adminSubmitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
+
+            if(article.id===null){
+              $store.dispatch('article/createArticlesAction',article)
+
+            }else{
+              const url='/api/article' +this.$route.query.id
+              console.log(url)
+              axios.get(url) //apiからのデータ取得をリクエスト
+                .then((res) => {    //thenはレスポンスを受け取った段階で呼ばれるメソッド(res)にはレスポンスデータが入っている
+                  console.log(res.data) //res.dataにはjsonオブジェクトが入っている
+                  return {post:res.data}
+                })
+            }
+
             alert('送信しました。'); //axios通信
           } else {
             console.log('error submit!!');

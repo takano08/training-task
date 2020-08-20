@@ -30,7 +30,7 @@
       axios.get(url) //apiからのデータ取得をリクエスト
         .then((res) => {    //thenはレスポンスを受け取った段階で呼ばれるメソッド(res)にはレスポンスデータが入っている
             console.log(res.data) //res.dataにはjsonオブジェクトが入っている
-            return {post:data}
+            return {post:res.data}
               })
 
     }
