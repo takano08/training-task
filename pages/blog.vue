@@ -5,10 +5,10 @@
     </div>
 
   <div class="blog-main">
-    <div v-for="article in articleLists" class="text item">
+    <div v-for="article in articles" class="text item">
       <el-card class="blog-card">
         <div class="article-header">
-          <h2>{{ article.title }}</h2>
+          <h2>{{ article.title}}</h2>
         </div>
         <div class="article-main">
           <p>{{ article.date }}</p>
@@ -35,8 +35,8 @@
   },
 
   computed: {
-    articleLists() {
-      return this.$store.state.article.articleLists;
+    articles() {
+      return this.$store.state.article.articles;
     }
   }
   }

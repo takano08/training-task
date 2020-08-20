@@ -91,10 +91,10 @@
         return this.$auth.user;
       }
     },
-    middleware({ store, redirect }) {
-      if(!store.$auth.loggedIn) {
-        redirect('/admin');
-        }
-    }
+    //middleware({ store, redirect }) {
+     // if(!store.$auth.loggedIn) {
+       // redirect('/admin');
+       // }
+    //}
 }
 </script>
