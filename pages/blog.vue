@@ -6,7 +6,7 @@
 
   <div class="blog-main">
     <div v-for="article in articles" class="text item">
-      <el-card class="blog-card">
+      <el-card class="blog-card" v-if="article.tag==='blog'">
         <div class="article-header">
           <h2>{{ article.title}}</h2>
         </div>
@@ -15,7 +15,7 @@
         </div>
         <div class="article-footer">
         <el-link type="primary">
-          <p　v-on:click="moveDetail(article.id)">read more</p>
+          <p v-on:click="moveDetail(article.id)">read more</p>
         </el-link>
         </div>
       </el-card>
