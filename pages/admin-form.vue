@@ -122,10 +122,10 @@
       }
     },
 
-   /* middleware({ store, redirect }) {
+   middleware({ store, redirect }) {
       if(!store.$auth.loggedIn) {
         redirect('/admin');
       }
-    }*/
+    }
   }
 </script>

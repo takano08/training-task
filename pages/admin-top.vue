@@ -75,12 +75,12 @@
       articles() {
         return this.$store.state.article.articles;
       }
+    },
+    middleware({ store, redirect }) {
+      if(!store.$auth.loggedIn) {
+        redirect('/admin');
+      }
     }
-    //middleware({ store, redirect }) {
-     // if(!store.$auth.loggedIn) {
-       // redirect('/admin');
-       // }
-    //}
 }
 </script>
 
