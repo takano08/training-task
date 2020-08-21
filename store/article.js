@@ -2,7 +2,9 @@ import axios from 'axios'
 
 export const state = () => ({
   articles: [{id:1,date:20200814,title:'テスト記事1',tag:'news',body:'テスト記事1',owner:'admin'},
-    {id:2,date:20200815,title:'テスト記事2',tag:'blog',body:'テスト記事2',owner:'admin'}]
+    {id:2,date:20200815,title:'テスト記事2',tag:'blog',body:'テスト記事2',owner:'admin'},
+    {id:3,date:20200816,title:'テスト記事3',tag:'news',body:'テスト記事3',owner:'admin'},
+    {id:4,date:20200817,title:'テスト記事4',tag:'blog',body:'テスト記事4',owner:'admin'}]
 })
 
 /*export const getters = {
