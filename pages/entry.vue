@@ -64,21 +64,21 @@
   </div>
   <div class="entry-form">
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="130px" class="demo-ruleForm">
-      <el-form-item label="採用種別" prop="region">
-         <el-select v-bind:disabled="verified" v-model="ruleForm.region" placeholder="採用種別を選択してください。">
+      <el-form-item label="採用種別" prop="occupation">
+         <el-select v-bind:disabled="verified" v-model="ruleForm.occupation" placeholder="採用種別を選択してください。">
             <el-option label="コンサルタント" value="shanghai"></el-option>
             <el-option label="エンジニア" value="beijing"></el-option>
          </el-select>
       </el-form-item>
-      <el-form-item label="氏名" prop="name">
-        <el-input v-bind:disabled="verified" v-model="ruleForm.name"></el-input>
+      <el-form-item label="氏名" prop="applicant_name">
+        <el-input v-bind:disabled="verified" v-model="ruleForm.applicant_name"></el-input>
       </el-form-item>
-      <el-form-item label="フリガナ" prop="phonetic">
-        <el-input v-bind:disabled="verified" v-model="ruleForm.phonetic"></el-input>
+      <el-form-item label="フリガナ" prop="applicant_name_ruby">
+        <el-input v-bind:disabled="verified" v-model="ruleForm.applicant_name_ruby"></el-input>
       </el-form-item>
       <el-form-item label="生年月日" required>
-          <el-form-item prop="birthday">
-            <el-date-picker v-bind:disabled="verified" type="date" placeholder="Pick a date" v-model="ruleForm.birthday" style="width: 500px;"></el-date-picker>
+          <el-form-item prop="birth_day">
+            <el-date-picker v-bind:disabled="verified" type="date" placeholder="Pick a date" v-model="ruleForm.birth_day" style="width: 500px;"></el-date-picker>
           </el-form-item>
       </el-form-item>
       <el-form-item label="性別" prop="gender">
@@ -87,11 +87,11 @@
           <el-radio label="女性"></el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="メールアドレス" prop="mail">
-        <el-input v-bind:disabled="verified" v-model="ruleForm.mail"></el-input>
+      <el-form-item label="メールアドレス" prop="e_mail">
+        <el-input v-bind:disabled="verified" v-model="ruleForm.e_mail"></el-input>
       </el-form-item>
-      <el-form-item label="電話番号" prop="phone">
-        <el-input v-bind:disabled="verified" v-model="ruleForm.phone"></el-input>
+      <el-form-item label="電話番号" prop="phone_number">
+        <el-input v-bind:disabled="verified" v-model="ruleForm.phone_number"></el-input>
       </el-form-item>
       <el-form-item label="その他（質問など)" prop="desc">
         <el-input type="textarea" v-bind:disabled="verified" v-model="ruleForm.desc" style="width: 500px;"></el-input>
@@ -118,35 +118,35 @@
       return {
       verified : false,
         ruleForm: {
-          name: '',
-          region: '',
-          phonetic:'',
-          birthday: '',
+          applicant_name: '',
+          occupation: '',
+          applicant_name_ruby:'',
+          birth_day: '',
           gender: '',
-          mail:'',
-          phone:'',
+          e_mail:'',
+          phone_number:'',
           desc: ''
         },
         rules: {
-        region: [
+          occupation: [
             { required: true, message: '必須項目です。', trigger: 'change' }
           ],
-          name: [
+          applicant_name: [
             { required: true, message: '必須項目です。', trigger: 'blur' }
           ],
-　　　　　　phonetic: [
+          applicant_name_ruby: [
             { required: true, message: '必須項目です。', trigger: 'blur' }
           ],
-          birthday: [
+          birth_day: [
             { type: 'date', required: true, message: '必須項目です。', trigger: 'change' }
           ],
           gender: [
             { required: true, message: '必須項目です。', trigger: 'change' }
           ],
-          mail: [
+          e_mail: [
             { required: true, message: '必須項目です。', trigger: 'blur' }
           ],
-          phone: [
+          phone_number: [
             { required: true, message: '必須項目です。', trigger: 'blur' }
           ],
           desc: [

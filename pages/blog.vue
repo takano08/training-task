@@ -49,8 +49,8 @@
   }
 
  .blog-card {
-     width: 700px;
-     margin:0 auto;
+     width: 500px;
+     margin:70px auto;
      text-align: center;
    }
 
