@@ -3,11 +3,11 @@
     <el-col :span="6"><div><Logo></Logo></div></el-col>
     <el-col :span="18">
       <div class="headerGroup">
-        <el-button><nuxt-link to="/">お知らせ</nuxt-link></el-button>
-        <el-button><nuxt-link to="about">企業情報</nuxt-link></el-button>
-        <el-button><nuxt-link to="blog">ブログ</nuxt-link></el-button>
-        <el-button><nuxt-link to="recruit">採用情報</nuxt-link></el-button>
-        <el-button><nuxt-link to="admin">管理者メニュー</nuxt-link></el-button>
+        <nuxt-link to="/"><el-button>お知らせ</el-button></nuxt-link>
+        <nuxt-link to="about"><el-button>企業情報</el-button></nuxt-link>
+        <nuxt-link to="blog"><el-button>ブログ</el-button></nuxt-link>
+        <nuxt-link to="recruit"><el-button>採用情報</el-button></nuxt-link>
+        <nuxt-link to="admin"><el-button>管理者メニュー</el-button></nuxt-link>
         <el-button v-show="loggedIn" type="primary" v-on:click="logout">Logout</el-button>
       </div>
     </el-col>
