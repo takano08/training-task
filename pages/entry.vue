@@ -174,13 +174,9 @@
          this.verified = !this.verified;
       }
 
-    },
-
-     computed: {
-      clickable() {
-        return true;
-      }
     }
+
+
 
   }
 </script>
