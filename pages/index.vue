@@ -21,8 +21,8 @@
       <h3>お知らせ</h3>
       <ul v-for="article in articles">
         <li v-if="article.tag==='news'">
-          <p>{{ article.date}}</p>
-          <p v-on:click="moveDetail(article.id)">{{ article.title}}</p>
+          <p>{{ article.createdDate}}</p>
+          <p v-on:click="moveDetail(article.articleId)">{{ article.title}}</p>
         </li>
       </ul>
     </div>

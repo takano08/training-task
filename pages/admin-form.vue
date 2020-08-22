@@ -1,6 +1,7 @@
 <template>
   <div class="admin-form-container">
     <div class="admin-form-top">
+      {{article}}
       <h1>記事入力フォーム</h1>
     </div>
     <div class="admin-form">
@@ -9,7 +10,7 @@
           <el-input v-bind:disabled="adminVerified" v-model="article.title"></el-input>
         </el-form-item>
         <el-form-item label="投稿日" required>
-          <el-form-item prop="postDate">
+          <el-form-item prop="createdDate">
             <el-date-picker v-bind:disabled="adminVerified" type="date" placeholder="Pick a date" v-model="article.postDate" style="width: 500px;"></el-date-picker>
           </el-form-item>
         </el-form-item>
@@ -46,17 +47,18 @@
         adminVerified : false,
 
         article: {
-          id:null,
+          articleId:null,
           title: '',
-          postDate: '',
+          createdDate: '',
           tag:'',
-          body: ''
+          body: '',
+          owner:this.$auth.user.loginId
         },
         adminRules: {
           title: [
             { required: true, message: '必須項目です。', trigger: 'change' }
           ],
-          postDate: [
+          createdDate: [
             { type: 'date', required: true, message: '必須項目です。', trigger: 'change' }
           ],
           tag: [

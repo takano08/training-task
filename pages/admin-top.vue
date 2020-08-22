@@ -11,7 +11,7 @@
     :data="articles">
     <el-table-column
       label="Date"
-      prop="date">
+      prop="createdDate">
     </el-table-column>
     <el-table-column
       label="Title"
@@ -35,11 +35,11 @@
       <template slot-scope="scope">
         <el-button
           size="mini"
-          v-on:click="handleEdit(scope.row.id)">編集</el-button>
+          v-on:click="handleEdit(scope.row.articleId)">編集</el-button>
         <el-button
           size="mini"
           type="danger"
-          v-on:click="$store.dispatch('article/deleteArticlesAction',scope.row.id)">削除</el-button>
+          v-on:click="$store.dispatch('article/deleteArticlesAction',scope.row.articleId)">削除</el-button>
       </template>
     </el-table-column>
   </el-table>
