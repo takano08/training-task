@@ -25,6 +25,11 @@
         }
       }
     },
+    middleware({ store, redirect }) {
+      if(store.$auth.loggedIn) {
+        redirect('/admin-top');
+      }
+    },
     methods: {
       async login() {
         try {

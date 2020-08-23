@@ -7,8 +7,8 @@
         <nuxt-link to="about"><el-button>企業情報</el-button></nuxt-link>
         <nuxt-link to="blog"><el-button>ブログ</el-button></nuxt-link>
         <nuxt-link to="recruit"><el-button>採用情報</el-button></nuxt-link>
-        <nuxt-link to="admin"><el-button>管理者メニュー</el-button></nuxt-link>
-        <el-button v-show="loggedIn" type="primary" v-on:click="logout">Logout</el-button>
+        <nuxt-link v-show="!loggedIn"　to="admin"><el-button>管理者メニュー</el-button></nuxt-link>
+        <el-button v-show="loggedIn" v-on:click="logout">Logout</el-button>
       </div>
     </el-col>
   </el-row>

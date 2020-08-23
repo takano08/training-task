@@ -94,8 +94,8 @@
       <el-form-item label="電話番号" prop="phoneNumber">
         <el-input v-bind:disabled="verified" v-model="ruleForm.phoneNumber"></el-input>
       </el-form-item>
-      <el-form-item label="その他（質問など)" prop="desc">
-        <el-input type="textarea" v-bind:disabled="verified" v-model="ruleForm.desc" style="width: 500px;"></el-input>
+      <el-form-item label="その他（質問など)" prop="inquiry">
+        <el-input type="textarea" v-bind:disabled="verified" v-model="ruleForm.inquiry" style="width: 500px;"></el-input>
       </el-form-item>
       <el-form-item>
         <template v-if="!verified">
@@ -129,7 +129,7 @@
           gender: '',
           eMail:'',
           phoneNumber:'',
-          desc: ''
+          inquiry: ''
         },
         rules: {
           occupation: [
@@ -153,7 +153,7 @@
           phoneNumber: [
             { required: true, message: '必須項目です。', trigger: 'blur' }
           ],
-          desc: [
+          inquiry: [
             { required: false, trigger: 'blur' }
           ]
         }
@@ -163,18 +163,16 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('送信しました。'); //axios通信
             const url = '/api/applicant'
             console.log(url);
             axios.post(url,this.ruleForm).then((response) => {
               this.resetForm(formName);
+              alert('送信しました。');
               return true;
             }, (err) => {
               console.log(err)
               return false;
             })
-
-
           } else {
             console.log('error submit!!');
             return false;
