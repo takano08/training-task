@@ -1,10 +1,11 @@
 import axios from 'axios'
 
 export const state = () => ({
-  articles: [{articleId:1,title:'テスト記事1',createdDate:20200814,tag:'news',body:'テスト記事1',owner:'admin'},
+  articles: [/*{articleId:1,title:'テスト記事1',createdDate:20200814,tag:'news',body:'テスト記事1',owner:'admin'},
     {articleId:2,title:'テスト記事2',createdDate:20200815,tag:'blog',body:'テスト記事2',owner:'admin'},
     {articleId:3,title:'テスト記事3',createdDate:20200816,tag:'news',body:'テスト記事3',owner:'admin'},
-    {articleId:4,title:'テスト記事4',createdDate:20200817,tag:'blog',body:'テスト記事4',owner:'admin'}]
+    {articleId:4,title:'テスト記事4',createdDate:20200817,tag:'blog',body:'テスト記事4',owner:'admin'}*/
+  ]
 })
 
 /*export const getters = {
@@ -26,6 +27,7 @@ export const actions = {
     axios.get('/api/article').then((response) => {
       //axios.get('http://localhost:8080/article').then((response) => {
       context.commit('updateArticles', response.data)
+      console.log(response.data);
       return true;
     }, (err) => {
       console.log(err)
