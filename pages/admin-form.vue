@@ -11,7 +11,7 @@
         </el-form-item>
         <el-form-item label="投稿日" required>
           <el-form-item prop="createdDate">
-            <el-date-picker v-bind:disabled="adminVerified" type="date" placeholder="Pick a date" v-model="article.postDate" style="width: 500px;"></el-date-picker>
+            <el-date-picker v-bind:disabled="adminVerified" type="date" placeholder="Pick a date" v-model="article.createdDate" style="width: 500px;"></el-date-picker>
           </el-form-item>
         </el-form-item>
         <el-form-item label="Tag" prop="tag">
@@ -92,8 +92,9 @@
         this.$refs[formName].validate((valid) => {
           if (valid) {
 
-            if(this.article.id===null){
+            if(!this.article.articleId){
               console.log("sinnki")
+              console.log(this.article)
               this.$store.dispatch('article/createArticlesAction',this.article)
 
             }else{//storeを経由しないのは、送信したもの（article）を再度読み込む必要がないから
@@ -108,7 +109,7 @@
             }
 
             alert('送信しました。'); //axios通信
-            this.adminResetForm(formName);
+            //this.adminResetForm(formName);
           } else {
             console.log('error submit!!');
             return false;
@@ -124,11 +125,6 @@
 
     },
 
-    computed: {
-      clickable() {
-        return true;
-      }
-    },
 
    middleware({ store, redirect }) {
       if(!store.$auth.loggedIn) {
