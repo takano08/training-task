@@ -2,14 +2,14 @@
   <div class="detail-container">
     <div class="detail-title">
      <p class="detail-date">
-     <span>{{ post[0].date }}</span>
+     <span>{{ article.createdDate }}</span>
      {{ $route.query.id }}
      </p>
-     <h1>{{ post[0].title }}</h1>
+     <h1>{{ article.title }}</h1>
     </div>
 
     <div class="detail-body">
-       <p>{{ post[0].body }}</p>
+       <p>{{ article.body }}</p>
     </div>
   </div>
 </template>
@@ -20,19 +20,35 @@
   export default {
     data(){
       return {
-       post:[{id:0,title:'テストタイトル',date:20200815,body:'記事本文'}],
+        article: {
+          articleId:null,
+          title: '',
+          createdDate: '',
+          tag:'',
+          body: '',
+          owner:this.$auth.user.loginId
+        }
       }
     },
 
     mounted(){
-      const url='/api/article' +this.$route.query.id
+      /*const url='/api/article/' +this.$route.query.id
       console.log(url)
       axios.get(url) //apiからのデータ取得をリクエスト
         .then((res) => {    //thenはレスポンスを受け取った段階で呼ばれるメソッド(res)にはレスポンスデータが入っている
             console.log(res.data) //res.dataにはjsonオブジェクトが入っている
-            return {post:res.data}
-              })
+            return {article:res.data}
+              })*/
+      this.article.id=this.$route.query.id
+      const url='/api/article/' +this.$route.query.id
+      axios.get(url).then(res=>(this.article=res.data))
 
+    },
+
+    computed: {
+      articles() {
+        return this.$store.state.article.articles;
+      }
     }
 }
 
