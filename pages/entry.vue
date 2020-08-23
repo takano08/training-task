@@ -61,24 +61,25 @@
   <div class="entry-form-top">
     <h1>エントリーフォーム</h1>
     <p>以下のフォームをご入力ください。入力いただいた内容を確認後、担当者よりご連絡いたします。</p>
+    {{ruleForm}}
   </div>
   <div class="entry-form">
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="130px" class="demo-ruleForm">
-      <el-form-item label="採用種別" prop="region">
-         <el-select v-bind:disabled="verified" v-model="ruleForm.region" placeholder="採用種別を選択してください。">
-            <el-option label="コンサルタント" value="shanghai"></el-option>
-            <el-option label="エンジニア" value="beijing"></el-option>
+      <el-form-item label="採用種別" prop="occupation">
+         <el-select v-bind:disabled="verified" v-model="ruleForm.occupation" placeholder="採用種別を選択してください。">
+            <el-option label="コンサルタント" value="コンサルタント"></el-option>
+            <el-option label="エンジニア" value="エンジニア"></el-option>
          </el-select>
       </el-form-item>
-      <el-form-item label="氏名" prop="name">
-        <el-input v-bind:disabled="verified" v-model="ruleForm.name"></el-input>
+      <el-form-item label="氏名" prop="applicantName">
+        <el-input v-bind:disabled="verified" v-model="ruleForm.applicantName"></el-input>
       </el-form-item>
-      <el-form-item label="フリガナ" prop="phonetic">
-        <el-input v-bind:disabled="verified" v-model="ruleForm.phonetic"></el-input>
+      <el-form-item label="フリガナ" prop="applicantNameRuby">
+        <el-input v-bind:disabled="verified" v-model="ruleForm.applicantNameRuby"></el-input>
       </el-form-item>
       <el-form-item label="生年月日" required>
-          <el-form-item prop="birthday">
-            <el-date-picker v-bind:disabled="verified" type="date" placeholder="Pick a date" v-model="ruleForm.birthday" style="width: 500px;"></el-date-picker>
+          <el-form-item prop="birthDay">
+            <el-date-picker v-bind:disabled="verified" type="date" placeholder="Pick a date" v-model="ruleForm.birthDay" style="width: 500px;"></el-date-picker>
           </el-form-item>
       </el-form-item>
       <el-form-item label="性別" prop="gender">
@@ -87,14 +88,14 @@
           <el-radio label="女性"></el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="メールアドレス" prop="mail">
-        <el-input v-bind:disabled="verified" v-model="ruleForm.mail"></el-input>
+      <el-form-item label="メールアドレス" prop="eMail">
+        <el-input v-bind:disabled="verified" v-model="ruleForm.eMail"></el-input>
       </el-form-item>
-      <el-form-item label="電話番号" prop="phone">
-        <el-input v-bind:disabled="verified" v-model="ruleForm.phone"></el-input>
+      <el-form-item label="電話番号" prop="phoneNumber">
+        <el-input v-bind:disabled="verified" v-model="ruleForm.phoneNumber"></el-input>
       </el-form-item>
-      <el-form-item label="その他（質問など)" prop="desc">
-        <el-input type="textarea" v-bind:disabled="verified" v-model="ruleForm.desc" style="width: 500px;"></el-input>
+      <el-form-item label="その他（質問など)" prop="inquiry">
+        <el-input type="textarea" v-bind:disabled="verified" v-model="ruleForm.inquiry" style="width: 500px;"></el-input>
       </el-form-item>
       <el-form-item>
         <template v-if="!verified">
@@ -113,43 +114,46 @@
 </template>
 
 <script>
+  import axios from "axios";
+
   export default {
     data() {
       return {
       verified : false,
         ruleForm: {
-          name: '',
-          region: '',
-          phonetic:'',
-          birthday: '',
+          applicantId:null,
+          occupation: '',
+          applicantName: '',
+          applicantNameRuby:'',
+          birthDay: '',
           gender: '',
-          mail:'',
-          phone:'',
-          desc: ''
+          eMail:'',
+          phoneNumber:'',
+          inquiry: ''
         },
         rules: {
-        region: [
+          occupation: [
             { required: true, message: '必須項目です。', trigger: 'change' }
           ],
-          name: [
+          applicantName: [
             { required: true, message: '必須項目です。', trigger: 'blur' }
           ],
-　　　　　　phonetic: [
+          applicantNameRuby: [
             { required: true, message: '必須項目です。', trigger: 'blur' }
           ],
-          birthday: [
+          birthDay: [
             { type: 'date', required: true, message: '必須項目です。', trigger: 'change' }
           ],
           gender: [
             { required: true, message: '必須項目です。', trigger: 'change' }
           ],
-          mail: [
+          eMail: [
             { required: true, message: '必須項目です。', trigger: 'blur' }
           ],
-          phone: [
+          phoneNumber: [
             { required: true, message: '必須項目です。', trigger: 'blur' }
           ],
-          desc: [
+          inquiry: [
             { required: false, trigger: 'blur' }
           ]
         }
@@ -159,8 +163,16 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('送信しました。'); //axios通信
-            this.resetForm(formName);
+            const url = '/api/applicant'
+            console.log(url);
+            axios.post(url,this.ruleForm).then((response) => {
+              this.resetForm(formName);
+              alert('送信しました。');
+              return true;
+            }, (err) => {
+              console.log(err)
+              return false;
+            })
           } else {
             console.log('error submit!!');
             return false;
@@ -174,13 +186,9 @@
          this.verified = !this.verified;
       }
 
-    },
-
-     computed: {
-      clickable() {
-        return true;
-      }
     }
+
+
 
   }
 </script>

@@ -11,11 +11,11 @@
           <h2>{{ article.title}}</h2>
         </div>
         <div class="article-main">
-          <p>{{ article.date }}</p>
+          <p>{{ article.createdDate }}</p>
         </div>
         <div class="article-footer">
         <el-link type="primary">
-          <p v-on:click="moveDetail(article.id)">read more</p>
+          <p v-on:click="moveDetail(article.articleId)">read more</p>
         </el-link>
         </div>
       </el-card>
@@ -49,8 +49,8 @@
   }
 
  .blog-card {
-     width: 700px;
-     margin:0 auto;
+     width: 500px;
+     margin:70px auto;
      text-align: center;
    }
 

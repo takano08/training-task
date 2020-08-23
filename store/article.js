@@ -1,8 +1,10 @@
 import axios from 'axios'
 
 export const state = () => ({
-  articles: [{id:1,date:20200814,title:'テスト記事1',tag:'news',body:'テスト記事1',owner:'admin'},
-    {id:2,date:20200815,title:'テスト記事2',tag:'blog',body:'テスト記事2',owner:'admin'}]
+  articles: [{articleId:1,title:'テスト記事1',createdDate:20200814,tag:'news',body:'テスト記事1',owner:'admin'},
+    {articleId:2,title:'テスト記事2',createdDate:20200815,tag:'blog',body:'テスト記事2',owner:'admin'},
+    {articleId:3,title:'テスト記事3',createdDate:20200816,tag:'news',body:'テスト記事3',owner:'admin'},
+    {articleId:4,title:'テスト記事4',createdDate:20200817,tag:'blog',body:'テスト記事4',owner:'admin'}]
 })
 
 /*export const getters = {
