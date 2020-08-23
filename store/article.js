@@ -49,7 +49,7 @@ export const actions = {
     })
   },
 
-  deleteEmployeesAction : async function ({commit,dispatch},articleId) {
+  deleteArticlesAction : async function ({commit,dispatch},articleId) {
 
     console.log(articleId);
     const url = '/api/article/' + articleId
