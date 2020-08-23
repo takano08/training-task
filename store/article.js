@@ -72,7 +72,7 @@ export const actions = {
     console.log(url);
     const updateArticleBody = {name:updateEmployee.name,role:updateEmployee.role}
     axios.put(url,updateArticleBody).then((response) => {
-      dispatch('fetchArticlesAction')
+      //dispatch('fetchArticlesAction')
       return true;
     }, (err) => {
       console.log(err)
