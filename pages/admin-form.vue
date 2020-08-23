@@ -78,7 +78,13 @@
       }else{
         console.log("編集")
         this.article.id=this.$route.query.id
+        const url='/api/article/' +this.$route.query.id
         //axiosでthis.$route.query.idを取りに行ってつめる
+        axios.get(url) //apiからのデータ取得をリクエスト
+          .then((res) => {    //thenはレスポンスを受け取った段階で呼ばれるメソッド(res)にはレスポンスデータが入っている
+            console.log(res)
+
+      })
       }
     },
     methods: {
@@ -88,17 +94,17 @@
 
             if(this.article.id===null){
               console.log("sinnki")
-              //this.$store.dispatch('article/createArticlesAction',article)
+              this.$store.dispatch('article/createArticlesAction',this.article)
 
             }else{//storeを経由しないのは、送信したもの（article）を再度読み込む必要がないから
               console.log("編集")
               const url='/api/article/' +this.$route.query.id
               console.log(url)
-              //axios.post(url) //apiからのデータ取得をリクエスト
-                //.then((res) => {    //thenはレスポンスを受け取った段階で呼ばれるメソッド(res)にはレスポンスデータが入っている
-                //console.log(res)
+              axios.put(url) //apiからのデータ取得をリクエスト
+                .then((res) => {    //thenはレスポンスを受け取った段階で呼ばれるメソッド(res)にはレスポンスデータが入っている
+                console.log(res)
 
-                //})
+                })
             }
 
             alert('送信しました。'); //axios通信

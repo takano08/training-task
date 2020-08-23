@@ -26,6 +26,9 @@
 
 <script>
   export default {
+    mounted() {
+      this.$store.dispatch('article/fetchArticlesAction')
+    },
 
   methods: {
     moveDetail(articleId) {　　// articleId = 1

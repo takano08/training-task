@@ -23,8 +23,8 @@ export const actions = {
 
   fetchArticlesAction : async function (context) {
 
-    axios.get('/api/employees').then((response) => {
-      //axios.get('http://localhost:8080/employees').then((response) => {
+    axios.get('/api/article').then((response) => {
+      //axios.get('http://localhost:8080/article').then((response) => {
       context.commit('updateArticles', response.data)
       return true;
     }, (err) => {
@@ -36,10 +36,10 @@ export const actions = {
   createArticlesAction : async function ({commit,dispatch},createArticle) {
 
     console.log(createArticle);
-    const url = '/api/employees/'
+    const url = '/api/article'
     console.log(url);
     axios.post(url,createArticle).then((response) => {
-      dispatch('fetchArticlesAction')
+      //dispatch('fetchArticlesAction')
       return true;
     }, (err) => {
       console.log(err)
@@ -47,24 +47,10 @@ export const actions = {
     })
   },
 
-  deleteEmployeesAction : async function ({commit,dispatch},employeesId) {
+  deleteEmployeesAction : async function ({commit,dispatch},articleId) {
 
-    console.log(employeesId);
-    const url = '/api/employees/' + employeesId
-    console.log(url);
-    axios.delete(url).then((response) => {
-      dispatch('fetchEmployeesAction')
-      return true;
-    }, (err) => {
-      console.log(err)
-      return false;
-    })
-  },
-
-  deleteArticlesAction : async function ({commit,dispatch},articlesId) {
-
-    console.log(articlesId);
-    const url = '/api/employees/' + articlesId
+    console.log(articleId);
+    const url = '/api/article/' + articleId
     console.log(url);
     axios.delete(url).then((response) => {
       dispatch('fetchArticlesAction')
@@ -74,4 +60,22 @@ export const actions = {
       return false;
     })
   },
+
+
+
+  updateArticlesAction : async function ({commit,dispatch},updateArticle) {
+
+    console.log(updateArticle);
+    const url = '/api/article/' + updateArticle.articleId
+    console.log(url);
+    const updateArticleBody = {name:updateEmployee.name,role:updateEmployee.role}
+    axios.put(url,updateArticleBody).then((response) => {
+      dispatch('fetchArticlesAction')
+      return true;
+    }, (err) => {
+      console.log(err)
+      return false;
+    })
+  }
+
 }
