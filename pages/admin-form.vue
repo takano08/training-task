@@ -58,9 +58,9 @@
           title: [
             { required: true, message: '必須項目です。', trigger: 'change' }
           ],
-          createdDate: [
+          /*createdDate: [
             { type: 'date', required: true, message: '必須項目です。', trigger: 'change' }
-          ],
+          ],*/
           tag: [
             { required: true, message: '必須項目です。', trigger: 'change' }
           ],
@@ -79,12 +79,7 @@
         console.log("編集")
         this.article.id=this.$route.query.id
         const url='/api/article/' +this.$route.query.id
-        //axiosでthis.$route.query.idを取りに行ってつめる
-        axios.get(url) //apiからのデータ取得をリクエスト
-          .then((res) => {    //thenはレスポンスを受け取った段階で呼ばれるメソッド(res)にはレスポンスデータが入っている
-            console.log(res)
-
-      })
+        axios.get(url).then(res=>(this.article=res.data))
       }
     },
     methods: {
@@ -99,11 +94,13 @@
 
             }else{//storeを経由しないのは、送信したもの（article）を再度読み込む必要がないから
               console.log("編集")
-              const url='/api/article/' +this.$route.query.id
+              const url='/api/update-article'
               console.log(url)
-              axios.put(url) //apiからのデータ取得をリクエスト
-                .then((res) => {    //thenはレスポンスを受け取った段階で呼ばれるメソッド(res)にはレスポンスデータが入っている
+              axios.post(url,this.article) //apiからのデータ取得をリクエスト
+                .then((res) => {//thenはレスポンスを受け取った段階で呼ばれるメソッド(res)にはレスポンスデータが入っている
+                console.log(this.article)
                 console.log(res)
+                  return true;
 
                 })
             }
