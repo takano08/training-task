@@ -1,23 +1,23 @@
 <template>
  <div class="blog-container">
-    <div class="blog-top">
-      <h1>BLOG</h1>
-    </div>
-
+      <h2>BLOG</h2>
   <div class="blog-main">
     <el-col :span="8" v-for="article in articles" :key="article" class="text item">
       <el-card class="blog-card" v-if="article.tag==='blog'">
-        <div class="article-header">
+        <div slot="header" class="clearfix">
           <h3>{{ article.title}}</h3>
         </div>
         <div class="article-main">
-          <p>{{ article.createdDate }}</p>
+          <div class="article-body">
+            {{ article.body}}
+          </div>
+          <el-link type="primary" :underline="false">
+            <p v-on:click="moveDetail(article.articleId)">read more...</p>
+          </el-link>
         </div>
         <div class="article-footer">
-          <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-        <el-link type="primary">
-          <p v-on:click="moveDetail(article.articleId)">read more</p>
-        </el-link>
+          <el-avatar  class="footer-avatar" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+          <a>{{ article.owner }} {{ article.createdDate }}</a>
         </div>
       </el-card>
     </el-col>
@@ -48,13 +48,12 @@
 
 <style>
   .blog-top {
-    background-color:#99FFFF;
     height:200px;
   }
 
  .blog-card {
      width: 400px;
-     margin: 50px auto;
+     margin: 20px auto;
      text-align: center;
    }
   .blog-card h3 {
@@ -67,4 +66,15 @@
     margin-right: auto;
   }
 
+  .blog-container h2 {
+    color: #333;
+    font-size: 22px;
+    border-bottom: #eee 1px solid;
+  }
+
+  .article-body {
+    height:150px ;
+    overflow: hidden;
+    line-height: 31px;
+  }
 </style>
