@@ -12,7 +12,9 @@
     <div class="box">
       <ul v-for="article in articles" style="list-style: none">
         <li  v-if="article.tag==='news'">
+          <el-link :underline="false" class="news-title">
           <a v-on:click="moveDetail(article.articleId)">{{ article.createdDate}}  {{ article.title}}</a>
+          </el-link>
         </li>
       </ul>
     </div>
@@ -99,7 +101,9 @@ export default {
 
   }
 
-
+  .news-title a {
+    font-size: 16px;
+  }
 
   .contents {
     margin-top: 20px;
@@ -116,7 +120,7 @@ export default {
   }
 
   .el-image__inner {
-    height: 200px;
+    height: 300px;
     object-fit: cover;
   }
 

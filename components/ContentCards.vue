@@ -5,18 +5,18 @@
     <el-col :span="8">
       <el-card class="box-card">
               <div slot="header" class="clearfix">
-                <span><nuxt-link to="/about">ABOUT</nuxt-link></span>
+                <nuxt-link to="/about"><el-link :underline="false" class="card-title">ABOUT</el-link></nuxt-link>
               </div>
               <img width="400px" src="/image/about.jpg" class="image">
               <div class="bottom clearfix">
-                <p>R&Dビジネスファクトリーのご案内</p>
+                <p>R&D BUSINESS FACTORYのご案内</p>
               </div>
       </el-card>
     </el-col>
     <el-col :span="8">
       <el-card class="box-card">
               <div slot="header" class="clearfix">
-                <span><nuxt-link to="/blog">BLOG</nuxt-link></span>
+                <nuxt-link to="/blog"><el-link :underline="false" class="card-title">BLOG</el-link></nuxt-link>
               </div>
               <img width="400px"  src="/image/blog.jpg" class="image">
               <div class="bottom clearfix">
@@ -27,7 +27,7 @@
     <el-col :span="8">
       <el-card class="box-card">
               <div slot="header" class="clearfix">
-                <span><nuxt-link to="/recruit">RECRUIT</nuxt-link></span>
+                <nuxt-link to="/recruit"><el-link :underline="false" class="card-title">RECRUIT</el-link></nuxt-link>
               </div>
               <img width="400px" src="/image/recruit.png" class="image">
               <div class="bottom clearfix">
@@ -77,6 +77,9 @@
     object-fit: cover;
   }
 
+  .card-title {
+    font-size:22px;
+  }
 
 
 
