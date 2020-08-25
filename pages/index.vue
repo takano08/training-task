@@ -1,24 +1,14 @@
 <template>
 <div class="container">
-  <div class ="top">
-  <div class="block">
-    <el-carousel height="300px">
-      <el-carousel-item >
-        <img src="https://i.shgcdn.com/a1060683-bd16-4ffd-ada6-a108706605cf/-/format/auto/-/preview/3000x3000/-/quality/lighter/" class="image">
-      </el-carousel-item>
-      <el-carousel-item >
-        <img src="https://i.shgcdn.com/1118ef0a-498e-41bb-b816-e62a0a476581/-/format/auto/-/preview/3000x3000/-/quality/lighter/" class="image">
-      </el-carousel-item>
-      <el-carousel-item >
-        <img src="https://i.shgcdn.com/a1060683-bd16-4ffd-ada6-a108706605cf/-/format/auto/-/preview/3000x3000/-/quality/lighter/" class="image">
-      </el-carousel-item>
-    </el-carousel>
-  </div>
+  <div class ="top" height="500px">
+    <div class="demo-image__lazy">
+      <el-image v-for="url in urls" :key="url" :src="url" lazy></el-image>
+    </div>
   </div>
 
   <div class="main">
     <div class="box scroll">
-      <h3>お知らせ</h3>
+      <h3>NEWS</h3>
       <ul v-for="article in articles">
         <li v-if="article.tag==='news'">
           <p>{{ article.createdDate}}</p>
@@ -40,6 +30,15 @@
 
 <script>
 export default {
+  data() {
+    return {
+      urls: [
+        '/image/topVue.jpg',
+
+      ]
+    }
+  },
+
   methods: {
     moveDetail(articleId) {　　// articleId = 1
       this.$router.push({path: 'detail', query: {id: articleId}});
@@ -60,12 +59,7 @@ export default {
 </script>
 
 <style>
-  .el-carousel__item  {
-      font-size: 14px;
-      opacity: 0.75;
-      line-height: 250px;
-      margin: 0;
-    }
+  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 
   .box{
     width: 95%;
@@ -88,7 +82,8 @@ export default {
   }
 
   .container {
-    height:100%
+    height:100%;
+    font-family: 'Lato', sans-serif;
   }
 
   .top {
@@ -104,4 +99,9 @@ export default {
     margin-top: 20px;
     margin-bottom: 40px;
   }
+
+  .main h3 {
+    font-size: 26px;
+  }
+
 </style>
