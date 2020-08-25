@@ -103,5 +103,8 @@ export default {
   .main h3 {
     font-size: 26px;
   }
+  .main p{
+    display: inline-block;
+  }
 
 </style>
