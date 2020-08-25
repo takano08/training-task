@@ -28,7 +28,7 @@
               <div slot="header" class="clearfix">
                 <span><nuxt-link to="/recruit">RECRUIT</nuxt-link></span>
               </div>
-              <img width="400px" src="/image/recruit.jpg" class="image">
+              <img width="400px" src="/image/recruit.png" class="image">
               <div class="bottom clearfix">
                 <p>採用に関するお問い合わせはこちら</p>
               </div>
