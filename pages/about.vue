@@ -1,8 +1,5 @@
 <template>
 <div class="about-container">
-  <div class="about-top">
-    <img height="230px" width="1000px" src="/image/aboutVue.jpg">
-  </div>
   <div class="about-body">
     <h2>会社概要</h2>
     <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table_about">
@@ -64,11 +61,13 @@
   }
 
   .about-body h2 {
-    border-bottom:solid 2px #333;
+    border-bottom:solid 2px #eee;
+    font-size: 22px;
+    color:#333;
   }
 
   .about-body th {
-    border-bottom:solid 1px #333;
+    border-bottom:solid 1px #eee;
   }
 
   .about-body td {

@@ -1,9 +1,7 @@
 <template>
   <div class="admin-top-container">
    <!--{{user}}-->
-    <div class="admin-top-header">
-      <h1>管理画面トップ</h1>
-    </div>
+      <h2>管理画面トップ</h2>
     <div class="edit">
       <nuxt-link to="/admin-form"><el-button type="primary">新規作成</el-button></nuxt-link>
     </div>
@@ -87,4 +85,10 @@
 .edit {
   text-align: right;
 }
+
+  .admin-top-container h2 {
+    color: #333;
+    font-size: 22px;
+    border-bottom: #eee 1px solid;
+  }
 </style>
