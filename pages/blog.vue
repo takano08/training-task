@@ -8,7 +8,7 @@
     <el-col :span="8" v-for="article in articles" :key="article" class="text item">
       <el-card class="blog-card" v-if="article.tag==='blog'">
         <div class="article-header">
-          <h2>{{ article.title}}</h2>
+          <h3>{{ article.title}}</h3>
         </div>
         <div class="article-main">
           <p>{{ article.createdDate }}</p>
@@ -57,7 +57,14 @@
      margin: 50px auto;
      text-align: center;
    }
-
-
+  .blog-card h3 {
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
 </style>
