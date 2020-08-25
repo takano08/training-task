@@ -2,17 +2,17 @@
 <div class="container">
   <div class ="top" height="500px">
     <div class="demo-image__lazy">
-      <el-image v-for="url in urls" :key="url" :src="url" lazy></el-image>
+      <el-image class="top-image" v-for="url in urls" :key="url" :src="url" lazy></el-image>
     </div>
   </div>
 
   <div class="main">
-    <div class="box scroll">
-      <h3>NEWS</h3>
-      <ul v-for="article in articles">
-        <li v-if="article.tag==='news'">
-          <p>{{ article.createdDate}}</p>
-          <p v-on:click="moveDetail(article.articleId)">{{ article.title}}</p>
+    <h3>NEWS</h3>
+
+    <div class="box">
+      <ul v-for="article in articles" style="list-style: none">
+        <li  v-if="article.tag==='news'">
+          <a v-on:click="moveDetail(article.articleId)">{{ article.createdDate}}  {{ article.title}}</a>
         </li>
       </ul>
     </div>
@@ -74,11 +74,15 @@ export default {
 
   .box ul li {
       text-align: left;
+     height: 40px;
     }
+
 
   .box p {
     text-align: left;
-    margin-left: 30px;
+    margin-left: 15px;
+    display: inline-block;
+
   }
 
   .container {
@@ -95,16 +99,26 @@ export default {
 
   }
 
+
+
   .contents {
     margin-top: 20px;
     margin-bottom: 40px;
   }
 
   .main h3 {
-    font-size: 26px;
+    font-size: 22px;
+    margin : 0px;
+    line-height: 60px;
   }
   .main p{
-    display: inline-block;
+
   }
+
+  .el-image__inner {
+    height: 200px;
+    object-fit: cover;
+  }
+
 
 </style>

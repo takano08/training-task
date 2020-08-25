@@ -1,6 +1,7 @@
 <template>
 <div class="card">
   <el-row :gutter="12">
+
     <el-col :span="8">
       <el-card class="box-card">
               <div slot="header" class="clearfix">
@@ -34,6 +35,7 @@
               </div>
       </el-card>
     </el-col>
+
   </el-row>
 </div>
 </template>
@@ -44,7 +46,9 @@
 　.el-card {
    height: 400px;
    display: flex;
-   flex-wrap: wrap;
+   flex-wrap: nowrap;
+  min-width: 500px;
+
  }
 
   .clearfix {
@@ -55,10 +59,22 @@
     color: #7F828B;
     font-family: 'Lato', sans-serif;
     font-family: 'Noto Sans JP', sans-serif;
+    flex-wrap: nowrap;
   }
 
   .box-card a {
     text-decoration: none;
+  }
+  .image{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
   }
 
 
