@@ -1,7 +1,7 @@
 <template>
 <div class="about-container">
   <div class="about-top">
-    <img height="230px" width="1200px" src="/image/aboutVue.jpg">
+    <img height="230px" width="1000px" src="/image/aboutVue.jpg">
   </div>
   <div class="about-body">
     <h2>会社概要</h2>

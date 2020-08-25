@@ -1,6 +1,6 @@
 <template>
   <div class="admin-top-container">
-   {{user}}
+   <!--{{user}}-->
     <div class="admin-top-header">
       <h1>管理画面トップ</h1>
     </div>

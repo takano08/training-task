@@ -61,7 +61,7 @@
   <div class="entry-form-top">
     <h1>エントリーフォーム</h1>
     <p>以下のフォームをご入力ください。入力いただいた内容を確認後、担当者よりご連絡いたします。</p>
-    {{ruleForm}}
+    <!--{{ruleForm}}-->
   </div>
   <div class="entry-form">
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="130px" class="demo-ruleForm">
@@ -194,6 +194,7 @@
 </script>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Noto+Sans+JP:wght@300&display=swap');
   .entry-top {
     background-image:url("https://d1f5hsy4d47upe.cloudfront.net/75/753641ca2aea0d4485e2472a0c04f3be_t.jpeg");
     height:200px;
@@ -217,7 +218,10 @@
     height:50px;
   }
 
-
+  .entry-container {
+    font-family: 'Lato', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
 
 </style>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="admin-form-container">
     <div class="admin-form-top">
-      {{article}}
+     <!-- {{article}}-->
       <h1>記事入力フォーム</h1>
     </div>
     <div class="admin-form">
