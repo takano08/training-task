@@ -1,9 +1,7 @@
 <template>
   <div class="admin-form-container">
-    <div class="admin-form-top">
-      {{article}}
-      <h1>記事入力フォーム</h1>
-    </div>
+      <!--{{article}}-->
+      <h2>記事入力フォーム</h2>
     <div class="admin-form">
       <el-form :model="article" :rules="adminRules" ref="article" label-width="130px" class="demo-adminForm">
         <el-form-item label="タイトル" prop="title">
@@ -130,3 +128,11 @@
     }
   }
 </script>
+
+<style>
+  .admin-form-container h2{
+    color: #333;
+    font-size: 22px;
+    border-bottom: #eee 1px solid;
+  }
+</style>

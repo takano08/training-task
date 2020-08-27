@@ -1,8 +1,5 @@
 <template>
 <div class="entry-container">
-  <div class="entry-top">
-    <h1>採用情報</h1>
-  </div>
   <div class="recruit-body">
     <h2>募集概要</h2>
     <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table_about">
@@ -61,7 +58,7 @@
   <div class="entry-form-top">
     <h1>エントリーフォーム</h1>
     <p>以下のフォームをご入力ください。入力いただいた内容を確認後、担当者よりご連絡いたします。</p>
-    {{ruleForm}}
+    <!--{{ruleForm}}-->
   </div>
   <div class="entry-form">
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="130px" class="demo-ruleForm">
@@ -194,18 +191,16 @@
 </script>
 
 <style>
-  .entry-top {
-    background-image:url("https://d1f5hsy4d47upe.cloudfront.net/75/753641ca2aea0d4485e2472a0c04f3be_t.jpeg");
-    height:200px;
-    }
+  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Noto+Sans+JP:wght@300&display=swap');
+
 
 
   .recruit-body h2 {
-    border-bottom:solid 2px #333;
+    border-bottom:solid 2px #eee;
   }
 
   .recruit-body th {
-    border-bottom:solid 1px #333;
+    border-bottom:solid 1px #eee;
   }
 
   .recruit-body td {
@@ -217,7 +212,10 @@
     height:50px;
   }
 
-
+  .entry-container {
+    font-family: 'Lato', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
 
 </style>
 

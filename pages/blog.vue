@@ -1,25 +1,26 @@
 <template>
  <div class="blog-container">
-    <div class="blog-top">
-      <h1>ブログ</h1>
-    </div>
-
+      <h2>BLOG</h2>
   <div class="blog-main">
-    <div v-for="article in articles" class="text item">
+    <el-col :span="8" v-for="article in articles" :key="article" class="text item">
       <el-card class="blog-card" v-if="article.tag==='blog'">
-        <div class="article-header">
-          <h2>{{ article.title}}</h2>
+        <div slot="header" class="clearfix">
+          <h3>{{ article.title}}</h3>
         </div>
         <div class="article-main">
-          <p>{{ article.createdDate }}</p>
+          <div class="article-body">
+            {{ article.body}}
+          </div>
+          <el-link type="primary" :underline="false">
+            <p v-on:click="moveDetail(article.articleId)">read more...</p>
+          </el-link>
         </div>
         <div class="article-footer">
-        <el-link type="primary">
-          <p v-on:click="moveDetail(article.articleId)">read more</p>
-        </el-link>
+          <a>{{ article.createdDate }} {{ article.owner }}</a>
+          <el-avatar  class="footer-avatar" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
         </div>
       </el-card>
-    </div>
+    </el-col>
   </div>
  </div>
 </template>
@@ -47,15 +48,33 @@
 
 <style>
   .blog-top {
-    background-image:url("https://d1f5hsy4d47upe.cloudfront.net/75/753641ca2aea0d4485e2472a0c04f3be_t.jpeg");
     height:200px;
   }
 
  .blog-card {
-     width: 500px;
-     margin:70px auto;
+     width: 400px;
+     margin: 20px auto;
      text-align: center;
    }
+  .blog-card h3 {
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
+  .blog-container h2 {
+    color: #333;
+    font-size: 22px;
+    border-bottom: #eee 1px solid;
+  }
 
+  .article-body {
+    height:150px ;
+    overflow: hidden;
+    line-height: 31px;
+  }
 </style>
