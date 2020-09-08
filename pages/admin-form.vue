@@ -9,7 +9,8 @@
         </el-form-item>
         <el-form-item label="投稿日" required>
           <el-form-item prop="createdDate">
-            <el-date-picker v-bind:disabled="adminVerified" type="date" placeholder="Pick a date" v-model="article.createdDate" style="width: 500px;"></el-date-picker>
+            <el-date-picker v-bind:disabled="adminVerified" type="date" placeholder="Pick a date" format="yyyy/MM/dd"
+                            value-format="yyyy-MM-dd" v-model="article.createdDate" style="width: 500px;"></el-date-picker>
           </el-form-item>
         </el-form-item>
         <el-form-item label="Tag" prop="tag">

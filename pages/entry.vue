@@ -76,7 +76,8 @@
       </el-form-item>
       <el-form-item label="生年月日" required>
           <el-form-item prop="birthDay">
-            <el-date-picker v-bind:disabled="verified" type="date" placeholder="Pick a date" v-model="ruleForm.birthDay" style="width: 500px;"></el-date-picker>
+            <el-date-picker v-bind:disabled="verified" type="date" placeholder="Pick a date" v-model="ruleForm.birthDay" format="yyyy/MM/dd"
+                            value-format="yyyy-MM-dd"　style="width: 500px;"></el-date-picker>
           </el-form-item>
       </el-form-item>
       <el-form-item label="性別" prop="gender">
@@ -138,9 +139,9 @@
           applicantNameRuby: [
             { required: true, message: '必須項目です。', trigger: 'blur' }
           ],
-          birthDay: [
+         /* birthDay: [
             { type: 'date', required: true, message: '必須項目です。', trigger: 'change' }
-          ],
+          ],*/
           gender: [
             { required: true, message: '必須項目です。', trigger: 'change' }
           ],
