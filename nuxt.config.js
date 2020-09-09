@@ -55,7 +55,8 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    '@nuxtjs/moment'
   ],
   /*
   ** Axios module configuration
@@ -95,6 +96,10 @@ export default {
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
+  moment: {
+    // ここにオプションが記述できる
+    locales: ['ja']
+  },
   build: {
     transpile: [/^element-ui/],
   }
