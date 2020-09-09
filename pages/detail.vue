@@ -26,7 +26,7 @@
           createdDate: '',
           tag:'',
           body: '',
-          owner:this.$auth.user.loginId
+          /*owner:this.$auth.user.loginId*/
         }
       }
     },
